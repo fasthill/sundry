@@ -28,12 +28,18 @@ time.sleep(1)
 
 url_lecture_num = ['29578', '29579', '29580', '29581']
 
+Initial_path = "C:/Users/user/Downloads"
+filename = []
+
 for url_num in url_lecture_num:
     url = 'http://course.pcu.ac.kr/report/ubcompletion/progress.php?id=' + url_num
     driver.get(url)
     time.sleep(1)
     driver.find_element_by_css_selector('.btn.btn-success').click()  
     time.sleep(1)
+    filename.append(max([os.path.join(Initial_path, f) for f in os.listdir(Initial_path)], key=os.path.getctime))
 
 driver.close()
 driver.quit()
+
+# saved file names = filename
