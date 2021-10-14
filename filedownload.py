@@ -1,20 +1,20 @@
-
 from selenium import webdriver as wd
 from bs4 import BeautifulSoup as bs
 import time
 import os
 
-main_url = 'http://course.pcu.ac.kr/report/ubcompletion/progress.php?id=29581'
+# !pip install chromedriver_autoinstaller
+
+import chromedriver_autoinstaller
+
+chromedriver_autoinstaller.install()  # Check if the current version of chromedriver exists
+                                      # and if it doesn't exist, download it automatically,
+                                      # then add chromedriver to path
+                                      
 main_url = 'https://course.pcu.ac.kr/login.php'
 
-"""
-options = wd.ChromeOptions()
-prefs = {'download.default_directory' : "C:\소중사업\SW공유교육\2021년\수강인원집계\rawdata"}
-options.add_experimental_option("prefs", prefs);
-driver = wd.Chrome(executable_path='chromedriver.exe', options = options)
-"""
-
-driver = wd.Chrome(executable_path='chromedriver.exe')
+driver = wd.Chrome()
+driver.set_window_position(-10000,0) # hide windows
 driver.get(main_url)
 
 driver.find_element_by_id('input-username').send_keys('A03185')
